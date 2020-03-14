@@ -23,6 +23,10 @@ static float upX = 0.0;
 static float upY = 1.0;
 static float upZ = 0.0;
 
+static float rotX = 0.0;
+static float rotY = 0.0;
+static float rotZ = 0.0;
+
 static void init(void)
 {
     glClearColor(0.0, 0.0, 0.0, 0.0);
@@ -36,8 +40,10 @@ static void display(void)
     glLoadIdentity();
     glTranslatef(0.0f, 0.0f, -7.0f);
 
-//    glRotatef(0.0+rotX, 1.0, 0.0, 0.0);
-//    glRotatef(0.0+rotY, 0.0, 1.0, 0.0);
+    // For rotation
+    glRotatef(0.0+rotX, 1.0, 0.0, 0.0);
+    glRotatef(0.0+rotY, 0.0, 1.0, 0.0);
+    glRotatef(0.0+rotZ, 0.0, 0.0, 1.0);
 
     gluLookAt(posX, posY, posZ,
               viewX + cos(rotXZ * M_PI / 180), viewY, viewZ + sin(rotXZ * M_PI / 180),
@@ -109,15 +115,27 @@ static void key(unsigned char key, int x, int y)
         case 'd':
             rotXZ-=5;
             break;
-        case 'z':
+        case 'o':
             zoom+=0.1;
             break;
-        case 'x':
+        case 'p':
             zoom-=0.1;
+            break;
+        case 'x':
+            rotX += 5;
+            break;
+        case 'y':
+            rotX += 5;
+            break;
+        case 'z':
+            rotX += 5;
             break;
         case 'r':
             rotXZ = 0;
             rotXY = 0;
+            rotX = 0;
+            rotY = 0;
+            rotZ = 0;
             zoom = 0;
             upY = 1;
             break;
