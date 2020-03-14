@@ -384,6 +384,14 @@ static void display(void)
        }
     }
    glEnd();
+    //sambungan roda
+   glBegin(GL_POLYGON);
+    glColor3f(1,1,1);
+    glVertex3f(0.475,-0.5,-0.4);
+    glVertex3f(0.45,-0.5,-0.4);
+    glVertex3f(0.475,-0.5,0.2);
+    glVertex3f(0.45,-0.5,0.2);
+    glEnd();
 
 
     glFlush();
