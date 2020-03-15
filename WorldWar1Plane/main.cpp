@@ -402,7 +402,8 @@ static void display(void)
        }
     }
    glEnd();
-    //sambungan roda
+
+    //sambungan buat roda
    glBegin(GL_POLYGON);
     glColor3f(1,1,1);
     glVertex3f(0.475,-0.5,-0.4);
