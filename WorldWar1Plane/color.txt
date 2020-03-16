@@ -5,3 +5,30 @@
 1 0.5 0
 1 0.5 0
 
+1 0 0
+
+1 1 1
+
+0.3 0.6 1
+
+0.3 0.6 1
+
+1 0.3 0.1
+
+1 1 1
+
+0.3 0.3 0.3
+
+-9999 // EOF
+
+Keterangan:
+- Setiap baris merepresentasikan R, G, B
+- Spasi menandakan pergantian komponen dari model pesawat berikut urutan komponennya:
+    1. Warna tiap bagian body pesawat (6 bagian)
+    2. Warna sayap
+    3. Warna penyangga sayap
+    4. Warna baling-baling
+    5. Warna ekor
+    6. Warna sayap belakang
+    7. Warna penyangga roda
+    8. Warna roda
