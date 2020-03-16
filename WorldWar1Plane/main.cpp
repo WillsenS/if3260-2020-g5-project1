@@ -3,9 +3,14 @@
  * using polygon
  */
 
+#include <stdio.h>
 #include <GL/glut.h>
 #include <math.h>
 #include <stdlib.h>
+#define nVertex 200
+#define nColor 6
+
+using namespace std;
 
 static float rotCamXY = 0.0;//kamera mengitari model
 static float rotCamPro = 0.0; //memutar bidang proyeksi kamera
@@ -31,11 +36,36 @@ static float upX = 0.0;
 static float upY = 0.0;
 static float upZ = 1.0;
 
+static float vertexMatrix[nVertex][3];
+static float colorMatrix[nColor][3];
+
 static void init(void)
 {
     glClearColor(0,0,0,0);
     glShadeModel(GL_FLAT);
     glEnable(GL_DEPTH_TEST);
+}
+
+static void getVertexBuffer()
+{
+    FILE *f;
+
+    // For windows uses full path
+    f = fopen("C:/Users/user/Documents/ITB/IF/Semester 6/Grafkom/Tubes 1/if3260-2020-g5-project1/WorldWar1Plane/color.txt", "r");
+
+    // For Linux
+    // f = fopen("color.txt", "r");
+    int i,j;
+
+    for(i=0; i<nColor; i++)
+    {
+        for(j=0; j<3; j++)
+        {
+            fscanf(f, "%f", &colorMatrix[i][j]);
+            printf("%f ", colorMatrix[i][j]);
+        }
+        printf("\n");
+    }
 }
 
 static void display(void)
@@ -385,7 +415,7 @@ static void display(void)
     glVertex3f(0.475,-0.5,-0.4);
     glVertex3f(0.45,-0.5,-0.4);
     glEnd();
-    
+
     //rodanya
     glBegin(GL_POLYGON);
     glColor3f(0.3,0.3,0.3);
@@ -398,7 +428,8 @@ static void display(void)
     }
 
    glEnd();
-//rodanya
+
+    //rodanya
    glBegin(GL_POLYGON);
    glColor3f(0.3,0.3,0.3);
     for (int j = 0; j < 50; j++){
@@ -411,7 +442,7 @@ static void display(void)
    glEnd();
 
     //sambungan buat roda
-   glBegin(GL_POLYGON);
+    glBegin(GL_POLYGON);
     glColor3f(1,1,1);
     glVertex3f(0.475,-0.5,-0.4);
     glVertex3f(0.45,-0.5,-0.4);
@@ -528,6 +559,8 @@ static void idle(void)
 
 int main(int argc, char *argv[])
 {
+    getVertexBuffer();
+
     glutInit(&argc, argv);
     glutInitWindowSize(640,640);
     glutInitWindowPosition(0,0);
