@@ -56,7 +56,7 @@ static void display(void)
 
     glScalef(1.0, 1.0, 1.0);
 
-//body pesawat di koordinat 0 Z
+    //body pesawat di koordinat 0 Z
     glBegin(GL_POLYGON);
     glColor3f(0.0, 0.0, 1.0);
     glVertex3f( 1.0, 0.2, 0);
@@ -77,6 +77,7 @@ static void display(void)
     glVertex3f( -0.8, -0.35, -0.2);
     glVertex3f( -0.9, -0.25, -0.2);
     glEnd();
+
     //body pesawat penampang baling2
     glBegin(GL_POLYGON);
     glColor3f(1,0.5,0);
@@ -85,7 +86,8 @@ static void display(void)
     glVertex3f( 1.0, -0.2, -0.2);
     glVertex3f( 1.0, -0.2, 0);
     glEnd();
-//body pesawat bagian atas
+
+    //body pesawat bagian atas
     glBegin(GL_POLYGON);
     glColor3f(1,0.5,0);
     glVertex3f( 1.0, 0.2, 0);
@@ -93,7 +95,8 @@ static void display(void)
     glVertex3f( -0.9, -0.25, -0.2);
     glVertex3f( -0.9, -0.25, 0);
     glEnd();
-//body pesawat bagian atas belakang
+
+    //body pesawat bagian atas belakang
     glBegin(GL_POLYGON);
     glColor3f(1,0.5,0);
     glVertex3f( -0.9, -0.25, -0.2);
@@ -101,7 +104,8 @@ static void display(void)
     glVertex3f( -0.8, -0.35, -0.2);
     glVertex3f( -0.8, -0.35, 0);
     glEnd();
-//body pesawat bagian bawah
+
+    //body pesawat bagian bawah
     glBegin(GL_POLYGON);
     glColor3f(1,0.5,0);
     glVertex3f( -0.8, -0.35, -0.2);
@@ -112,11 +116,9 @@ static void display(void)
     glVertex3f( 1, -0.2, -0.2);
     glVertex3f( 0.9, -0.25, -0.2);
     glVertex3f( 0.6, -0.3, -0.2);
-
     glEnd();
 
-    /*sayap bawah*/
-//sayap bawah kanan
+    //sayap bawah kanan
     glBegin(GL_POLYGON);
     glColor3f(1,0.0,0);
     glVertex3f( 0.6, -0.3, 0);
@@ -124,16 +126,17 @@ static void display(void)
     glVertex3f( 0.3, -0.31, 1);
     glVertex3f( 0.6, -0.3, 1);
     glEnd();
-//sayap bawah kanan (buat ketebalan)
+
+    //sayap bawah kanan (buat ketebalan)
     glBegin(GL_POLYGON);
     glColor3f(1,0.0,0);
     glVertex3f( 0.6, -0.27, 0);
     glVertex3f( 0.3, -0.29, 0);
     glVertex3f( 0.3, -0.31, 1);
     glVertex3f( 0.6, -0.3, 1);
-
     glEnd();
-//sayap bawah kiri
+
+    //sayap bawah kiri
     glBegin(GL_POLYGON);
     glColor3f(1,0.0,0);
     glVertex3f( 0.6, -0.3,-0.2);
@@ -141,18 +144,17 @@ static void display(void)
     glVertex3f( 0.3, -0.31, -1.2);
     glVertex3f( 0.6, -0.3, -1.2);
     glEnd();
-// sayap bawah kiri (buat ketebelan)
+
+    // sayap bawah kiri (buat ketebelan)
     glBegin(GL_POLYGON);
     glColor3f(1,0.0,0);
     glVertex3f( 0.6, -0.27, -0.2);
     glVertex3f( 0.3, -0.29, -0.2);
     glVertex3f( 0.3, -0.31, -1.2);
     glVertex3f( 0.6, -0.3, -1.2);
-
     glEnd();
 
-    /*sayap atas*/
-// sayap atas kanan
+    // sayap atas kanan
     glBegin(GL_POLYGON);
     glColor3f(1,0.0,0);
     glVertex3f( 0.6, 0.3, 0);
@@ -160,16 +162,17 @@ static void display(void)
     glVertex3f( 0.3, 0.29, 1);
     glVertex3f( 0.6, 0.3, 1);
     glEnd();
-//sayap atas kanan (buat ketebalan)
+
+    //sayap atas kanan (buat ketebalan)
     glBegin(GL_POLYGON);
     glColor3f(1,0.0,0);
     glVertex3f( 0.6, 0.33, 0);
     glVertex3f( 0.3, 0.29, 0);
     glVertex3f( 0.3, 0.29, 1);
     glVertex3f( 0.6, 0.30, 1);
-
     glEnd();
-//sayap kiri atas
+
+    //sayap kiri atas
     glBegin(GL_POLYGON);
     glColor3f(1,0.0,0);
     glVertex3f( 0.6, 0.3,-0.2);
@@ -177,26 +180,25 @@ static void display(void)
     glVertex3f( 0.3, 0.29, -1.2);
     glVertex3f( 0.6, 0.3, -1.2);
     glEnd();
-//sayap kiri atas (buat ketebalan)
+
+    //sayap kiri atas (buat ketebalan)
     glBegin(GL_POLYGON);
     glColor3f(1,0.0,0);
     glVertex3f( 0.6, 0.33, -0.2);
     glVertex3f( 0.3, 0.29, -0.2);
     glVertex3f( 0.3, 0.31, -1.2);
     glVertex3f( 0.6, 0.3, -1.2);
-
     glEnd();
-// penampang penyambung atas untuk sayap
+
+    // penampang penyambung atas untuk sayap
     glBegin(GL_POLYGON);
     glColor3f(1,0.0,0);
     glVertex3f( 0.6, 0.33, -0.2);
     glVertex3f( 0.3, 0.29, -0.2);
     glVertex3f( 0.3, 0.29, 0);
     glVertex3f( 0.6, 0.33, 0);
-
     glEnd();
 
-    /*baling2*/
     //baling" vertikal
     glBegin(GL_POLYGON);
     glColor3f(0.3, 0.6,1);
@@ -207,7 +209,8 @@ static void display(void)
         glVertex3f(1+i*0.001, -0.35, -0.125);
     }
     glEnd();
-//baling" horizontal
+
+    //baling" horizontal
     glBegin(GL_POLYGON);
     glColor3f(0.3, 0.6,1);
     for (int i=0; i < 50; i++){
@@ -216,8 +219,8 @@ static void display(void)
         glVertex3f(1+i*0.001, -0.025, -0.45);
         glVertex3f(1+i*0.001, -0.025, 0.25);
     }
-
     glEnd();
+
     //ekor
     //penampang kanan ekor
     glBegin(GL_POLYGON);
@@ -227,9 +230,9 @@ static void display(void)
     glVertex3f(-1.1, 0.15, -0.1);
     glVertex3f(-1.1, -0.35, 0);
     glVertex3f(-0.6, -0.35, 0);
-
     glEnd();
-// penampang kiri ekor
+
+    // penampang kiri ekor
     glBegin(GL_POLYGON);
     glColor3f(0.3, 0.6,1);
     glVertex3f(-0.6, -0.1789, -0.2);
@@ -237,9 +240,9 @@ static void display(void)
     glVertex3f(-1.1, 0.15, -0.1);
     glVertex3f(-1.1, -0.35, -0.2);
     glVertex3f(-0.6, -0.35, -0.2);
-
     glEnd();
-// penampang belakang ekor
+
+    // penampang belakang ekor
     glBegin(GL_POLYGON);
     glVertex3f(-1.1, -0.35, -0.2);
     glVertex3f(-1.1, -0.35, 0);
@@ -255,7 +258,8 @@ static void display(void)
     glVertex3f(-0.9, -0.25, 0.3);
     glVertex3f(-1.1, -0.35, 0.4);
     glEnd();
-//sayap kiri
+
+    //sayap kiri
     glBegin(GL_POLYGON);
     glColor3f(1,0.3,0.1);
     glVertex3f(-1.1, -0.35, -0.2);
@@ -265,7 +269,6 @@ static void display(void)
     glEnd();
 
     //Penyangga sayap
-
     glBegin(GL_POLYGON);
     glColor3f(1,1,1);
     glVertex3f(0.35,-0.3,0.6);
@@ -355,7 +358,8 @@ static void display(void)
     glVertex3f(0.475,-0.5,0.2);
     glVertex3f(0.45,-0.5,0.2);
     glEnd();
-//penyangga roda
+
+    //penyangga roda
     glBegin(GL_POLYGON);
     glColor3f(1,1,1);
     glVertex3f(0.6,-0.3,0);
@@ -363,7 +367,8 @@ static void display(void)
     glVertex3f(0.475,-0.5,0.2);
     glVertex3f(0.45,-0.5,0.2);
     glEnd();
-//penyangga roda
+
+    //penyangga roda
     glBegin(GL_POLYGON);
     glColor3f(1,1,1);
     glVertex3f(0.3,-0.3,-0.2);
@@ -371,7 +376,8 @@ static void display(void)
     glVertex3f(0.475,-0.5,-0.4);
     glVertex3f(0.45,-0.5,-0.4);
     glEnd();
-//penyangga roda
+
+    //penyangga roda
     glBegin(GL_POLYGON);
     glColor3f(1,1,1);
     glVertex3f(0.6,-0.3,-0.2);
@@ -379,7 +385,8 @@ static void display(void)
     glVertex3f(0.475,-0.5,-0.4);
     glVertex3f(0.45,-0.5,-0.4);
     glEnd();
-//rodanya
+    
+    //rodanya
     glBegin(GL_POLYGON);
     glColor3f(0.3,0.3,0.3);
     for (int j = 0; j < 50; j++){
