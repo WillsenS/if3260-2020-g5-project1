@@ -7,14 +7,17 @@
 #include <GL/glut.h>
 #include <math.h>
 #include <stdlib.h>
-#define nVertex 135
-#define nColor 13
-
+#include <iostream>
 using namespace std;
+
+#define nVertex 200
+#define nColor 13
 
 static float rotCamXY = 0.0;//kamera mengitari model
 static float rotCamPro = 0.0; //memutar bidang proyeksi kamera
 static float zoom = 0.0; //radius
+static float tX = 0;
+static float tZ = 0;
 
 static float rotX = 0.0;
 static float rotY = 0.0;
@@ -51,7 +54,7 @@ static void getColorBuffer()
     FILE *f;
 
     // For windows uses full path
-    f = fopen("C:/Users/user/Documents/ITB/IF/Semester 6/Grafkom/Tubes 1/if3260-2020-g5-project1/WorldWar1Plane/color.txt", "r");
+    f = fopen("C:/Users/asus/Documents/CodeBlock/WorldWar1Plane/color.txt", "r");
 
     // For Linux
     // f = fopen("color.txt", "r");
@@ -78,7 +81,7 @@ static void getVertexBuffer()
     FILE *f;
 
     // For windows uses full path
-    f = fopen("C:/Users/user/Documents/ITB/IF/Semester 6/Grafkom/Tubes 1/if3260-2020-g5-project1/WorldWar1Plane/vertex.txt", "r");
+    f = fopen("C:/Users/asus/Documents/CodeBlock/WorldWar1Plane/vertex.txt", "r");
 
     // For Linux
     // f = fopen("color.txt", "r");
@@ -107,7 +110,7 @@ static void display(void)
     glColor3ub(255, 255, 255);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    glTranslatef(0.0f, 0.0f, -4.0f + zoom);
+    glTranslatef(0.0f + tX, 0.0f, -4.0f + zoom + tZ);
 
     glRotatef(0.0+rotX, 1.0, 0.0, 0.0);
     glRotatef(0.0+rotY, 0.0, 1.0, 0.0);
@@ -119,7 +122,7 @@ static void display(void)
 
     glScalef(1.0, 1.0, 1.0);
 
-    //body pesawat di koordinat 0 Z
+//body pesawat di koordinat 0 Z
     glBegin(GL_POLYGON);
     glColor3f(colorMatrix[0][0], colorMatrix[0][1], colorMatrix[0][2]);
     glVertex3f(vertexMatrix[0][0], vertexMatrix[0][1], vertexMatrix[0][2]);
@@ -487,8 +490,7 @@ static void display(void)
     glVertex3f(vertexMatrix[134][0], vertexMatrix[134][1], vertexMatrix[134][2]);
     glEnd();
 
-
-    // Benda lain untuk titik acuan
+    //benda kubus untuk titik acuan
     glBegin(GL_QUADS);
     glColor3f(0.0, 0.0, 1.0);
     glVertex3f( 3.0, 3.0, 3.0);
@@ -539,17 +541,25 @@ static void key(unsigned char key, int x, int y)
         case 'q':
             exit(0);
             break;
-        case 's':
-            rotCamPro+=3;
-            upX = cos(M_PI * rotCamPro / 180);
-            upZ = sin(M_PI * rotCamPro / 180);
-            break;
         case 'a':
+            rotCamPro+=3;
+            viewX = cos(M_PI * rotCamPro / 180);
+            viewZ = sin(M_PI * rotCamPro / 180);
+            tX += viewX; tZ += viewZ;
             break;
-        case 'd':
-            break;
+//        case 'd':
+//            rotCamPro-=3;
+//            viewX = cos(M_PI * rotCamPro / 180);
+//            viewZ = sin(M_PI * rotCamPro / 180);
+//            tX -= viewX; tZ -= viewZ;
+//            break;
         case 'w':
             rotCamXY+=3;
+            posX = cos(M_PI * rotCamXY / 180);
+            posZ = sin(M_PI * rotCamXY / 180);
+            break;
+        case 's':
+            rotCamXY-=3;
             posX = cos(M_PI * rotCamXY / 180);
             posZ = sin(M_PI * rotCamXY / 180);
             break;
@@ -575,11 +585,28 @@ static void key(unsigned char key, int x, int y)
             posX = 1, posY = 0, posZ = 0;
             upX = 0, upY = 1, upZ = 0;
             refX = 0, refY = 0, refZ = 0;
+            tX = 0, tZ = 0;
             zoom = 0;
             break;
      }
 
     glutPostRedisplay();
+}
+
+static void helpManual () {
+    cout << "HELP MANUAL" << endl;
+    cout << "" << endl;
+    cout << "Key for viewing : " << endl;
+    cout << "- For zooming, press \'o\' for zoom in and press \'p\' for zoom out." << endl;
+    cout << "- For reset to default view, press \'r\'." << endl;
+    cout << "- For rotating the model : " << endl;
+    cout << "     > Press \'x\' for rotating the model in x-axis" << endl;
+    cout << "     > Press \'y\' for rotating the model in y-axis" << endl;
+    cout << "     > Press \'z\' for rotating the model in z-axis" << endl;
+    cout << "- For the camera to rotate the model, press \'w\' or \'s\'." << endl;
+    cout << "" << endl;
+    cout << "For exit the application, press \'q\'" << endl;
+    cout << "" << endl;
 }
 
 static void resize (int w, int h)
@@ -600,10 +627,10 @@ static void idle(void)
 
 int main(int argc, char *argv[])
 {
+    helpManual();
     // Inisialisasi dari file eksternal
     getColorBuffer();
     getVertexBuffer();
-
 
     glutInit(&argc, argv);
     glutInitWindowSize(640,640);
